@@ -1,7 +1,7 @@
 ﻿var CandidatoControllers = angular.module("CandidatoControllers", []);
 
 CandidatoControllers.controller("ListarController"
-    , ["$scope", "$http", function ($scope, $http) {
+    , ["$scope", "$http", "$location", function ($scope, $http, $location) {
 
 
         $http({
@@ -26,6 +26,11 @@ CandidatoControllers.controller("ListarController"
                });
         }
 
+        $scope.Editar = function (candidato) {
+            $location.path("/Editar/" + candidato.Id);
+           
+        }
+
 
     }]);
 
@@ -37,15 +42,15 @@ CandidatoControllers.controller("EditarController"
 
         $scope.salvar = function () {
 
-            if ($scope.candidato.ID) {
-                $http.post("/api/Candidato/", $scope.candidato).success(function (data) {
+            if ($scope.Candidato.Id) {
+                $http.put("/api/Candidato/", $scope.Candidato).success(function (data) {
                     $location.path("/Listar");
                 }).error(function (data) {
                     $scope.error = "Um erro ocorreu ao salvar. " + data.ExceptionMessage;
                 });
             }
             else {
-                $http.put("/api/Candidato/", $scope.candidato).success(function (data) {
+                $http.post("/api/Candidato/", $scope.Candidato).success(function (data) {
                     $location.path("/Listar");
                 }).error(function (data) {
                     $scope.error = "Um erro ocorreu ao salvar. " + data.ExceptionMessage;
@@ -58,12 +63,12 @@ CandidatoControllers.controller("EditarController"
         }
 
         if ($routeParams.Id) {
-            $scope.id = $routeParams.Id;
+            $scope.Id = $routeParams.Id;
             $scope.Titulo = "Editar Candidato";
 
-            $http.get("/api/Candidato")
+            $http.get("/api/Candidato?id=" + $scope.Id)
             .success(function (data) {
-                $scope.candidato = data;
+                $scope.Candidato = data;
             });
         }
         else {

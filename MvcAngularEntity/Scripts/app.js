@@ -15,7 +15,7 @@ CandidadoApp.config([
                     templateUrl: "App/Candidato/Editar.html"
                     , controller: "EditarController"
                 })
-            .when("/Editar/:id"
+            .when("/Editar/:Id"
                 , {
                     templateUrl: "App/Candidato/Editar.html"
                     , controller: "EditarController"
