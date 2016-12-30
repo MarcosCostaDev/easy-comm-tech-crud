@@ -165,7 +165,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MvcAngularEntity.Common\MvcAngularEntity.Common.csproj">
+    <ProjectReference Include="..\MvcAngularEntity.Common\MvcAngularEntity.Common.csproj">
       <Project>{77ddb025-05c4-49ff-a4b6-48add3e27301}</Project>
       <Name>MvcAngularEntity.Common</Name>
     </ProjectReference>

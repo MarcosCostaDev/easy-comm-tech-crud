@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EasyProgramadoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Candidato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" />
+          <Property Name="Skype" Type="varchar" MaxLength="100" />
+          <Property Name="Telefone" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Linkedin" Type="varchar" MaxLength="200" />
+          <Property Name="Cidade" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="varchar" MaxLength="100" />
+          <Property Name="PretencaoSalario" Type="money" />
+          <Property Name="PretencaoSalarioHora" Type="money" />
+          <Property Name="NivelCSharp" Type="int" />
+          <Property Name="NivelAspNetMvc" Type="int" />
+          <Property Name="NivelAngularJs" Type="int" />
+          <Property Name="NivelJquery" Type="int" />
+          <Property Name="NivelBootstrap" Type="int" />
+          <Property Name="NivelWordpress" Type="int" />
+          <Property Name="NivelPhp" Type="int" />
+          <Property Name="NivelAndroid" Type="int" />
+          <Property Name="NidelIos" Type="int" />
+          <Property Name="NivelIonic" Type="int" />
+          <Property Name="Portifolio" Type="varchar" MaxLength="200" />
+          <Property Name="ConhecimentoLinguagens" Type="text" />
+          <Property Name="ConhecimentoSGC" Type="text" />
+          <Property Name="AreaInteresse" Type="varchar" MaxLength="100" />
+          <Property Name="HorasDisponivel" Type="int" />
+          <Property Name="HorarioDisponivel" Type="varchar" MaxLength="100" />
+          <Property Name="BuscaTipoVaga" Type="int" />
+          <Property Name="InformacaoBancaria" Type="varchar" MaxLength="100" />
+          <Property Name="ComentarioAdicional" Type="text" />
+        </EntityType>
+        <EntityContainer Name="EasyProgramadoresModelStoreContainer">
+          <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EasyProgramadoresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Candidato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Skype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Linkedin" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PretencaoSalario" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PretencaoSalarioHora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NivelCSharp" Type="Int32" />
+          <Property Name="NivelAspNetMvc" Type="Int32" />
+          <Property Name="NivelAngularJs" Type="Int32" />
+          <Property Name="NivelJquery" Type="Int32" />
+          <Property Name="NivelBootstrap" Type="Int32" />
+          <Property Name="NivelWordpress" Type="Int32" />
+          <Property Name="NivelPhp" Type="Int32" />
+          <Property Name="NivelAndroid" Type="Int32" />
+          <Property Name="NidelIos" Type="Int32" />
+          <Property Name="NivelIonic" Type="Int32" />
+          <Property Name="Portifolio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConhecimentoLinguagens" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConhecimentoSGC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AreaInteresse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HorasDisponivel" Type="Int32" />
+          <Property Name="HorarioDisponivel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BuscaTipoVaga" Type="Int32" />
+          <Property Name="InformacaoBancaria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ComentarioAdicional" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EasyProgramadoresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Candidatoes" EntityType="Self.Candidato" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EasyProgramadoresModelStoreContainer" CdmEntityContainer="EasyProgramadoresEntities">
+          <EntitySetMapping Name="Candidatoes">
+            <EntityTypeMapping TypeName="EasyProgramadoresModel.Candidato">
+              <MappingFragment StoreEntitySet="Candidato">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PretencaoSalario" ColumnName="PretencaoSalario" />
+                <ScalarProperty Name="PretencaoSalarioHora" ColumnName="PretencaoSalarioHora" />
+                <ScalarProperty Name="NivelCSharp" ColumnName="NivelCSharp" />
+                <ScalarProperty Name="NivelAspNetMvc" ColumnName="NivelAspNetMvc" />
+                <ScalarProperty Name="NivelAngularJs" ColumnName="NivelAngularJs" />
+                <ScalarProperty Name="NivelJquery" ColumnName="NivelJquery" />
+                <ScalarProperty Name="NivelBootstrap" ColumnName="NivelBootstrap" />
+                <ScalarProperty Name="NivelWordpress" ColumnName="NivelWordpress" />
+                <ScalarProperty Name="NivelPhp" ColumnName="NivelPhp" />
+                <ScalarProperty Name="NivelAndroid" ColumnName="NivelAndroid" />
+                <ScalarProperty Name="NidelIos" ColumnName="NidelIos" />
+                <ScalarProperty Name="NivelIonic" ColumnName="NivelIonic" />
+                <ScalarProperty Name="Portifolio" ColumnName="Portifolio" />
+                <ScalarProperty Name="ConhecimentoLinguagens" ColumnName="ConhecimentoLinguagens" />
+                <ScalarProperty Name="ConhecimentoSGC" ColumnName="ConhecimentoSGC" />
+                <ScalarProperty Name="AreaInteresse" ColumnName="AreaInteresse" />
+                <ScalarProperty Name="HorasDisponivel" ColumnName="HorasDisponivel" />
+                <ScalarProperty Name="HorarioDisponivel" ColumnName="HorarioDisponivel" />
+                <ScalarProperty Name="BuscaTipoVaga" ColumnName="BuscaTipoVaga" />
+                <ScalarProperty Name="InformacaoBancaria" ColumnName="InformacaoBancaria" />
+                <ScalarProperty Name="ComentarioAdicional" ColumnName="ComentarioAdicional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

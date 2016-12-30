@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEA57F5B-FAB5-4676-B588-531D5C896B92}</ProjectGuid>
+    <ProjectGuid>{77DDB025-05C4-49FF-A4B6-48ADD3E27301}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MvcAngularEntity.Business</RootNamespace>
-    <AssemblyName>MvcAngularEntity.Business</AssemblyName>
+    <RootNamespace>MvcAngularEntity.Common</RootNamespace>
+    <AssemblyName>MvcAngularEntity.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,16 +31,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\easy-commu-\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\easy-commu-\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,18 +51,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CandidatoBusiness.cs" />
+    <Compile Include="Candidato.cs">
+      <DependentUpon>Programadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Programadores.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Programadores.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Programadores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Programadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Programadores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Programadores.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="Programadores.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Programadores.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Programadores.edmx.diagram">
+      <DependentUpon>Programadores.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcAngularEntity.Common\MvcAngularEntity.Common.csproj">
-      <Project>{77ddb025-05c4-49ff-a4b6-48add3e27301}</Project>
-      <Name>MvcAngularEntity.Common</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Programadores.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Programadores.edmx</DependentUpon>
+      <LastGenOutput>Programadores.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Programadores.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Programadores.edmx</DependentUpon>
+      <LastGenOutput>Programadores.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
