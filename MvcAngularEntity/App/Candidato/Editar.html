@@ -1,0 +1,415 @@
+﻿<h3>{{Titulo}}</h3>
+<hr />
+<form role="form" style="max-width: 500px">
+    <strong class="error">{{error}}</strong>
+    <div class="form-group">
+        <label for="form-nome" class="control-label required">Nome/Name: <abbr title="required">*</abbr></label>
+        <input type="text" id="form-nome" class="form-control" ng-model="Nome" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-skype" class="control-label required">Skype: ( please create an account if you don't have yet / bom criar caso não tenha): <abbr title="required">*</abbr></label>
+        <input type="text" id="form-skype" class="form-control" ng-model="Skype" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-telefone" class="control-label required">Telefone/Phone (Whatsapp): <abbr title="required">*</abbr></label>
+        <input type="text" id="form-telefone" class="form-control" ng-model="Telefone" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-email" class="control-label required">E-mail: <abbr title="required">*</abbr></label>
+        <input type="text" id="form-email" class="form-control" ng-model="Email" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-cidade" class="control-label required">Cidade / City <abbr title="required">*</abbr></label>
+        <input type="text" id="form-cidade" class="form-control" ng-model="Cidade" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-estado" class="control-label required">Estado/ State <abbr title="required">*</abbr></label>
+        <input type="text" id="form-estado" class="form-control" ng-model="Estado" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-pretencao-salario" class="control-label required">What is your hourly salary requirements? / Qual sua pretensão salarial por hora? <abbr title="required">*</abbr></label>
+        <input type="text" id="form-pretencao-salario" class="form-control" ng-model="PretencaoSalario" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-pretencao-salario-hora" class="control-label required">What is your hourly salary requirements? / Qual sua pretensão salarial por hora? <abbr title="required">*</abbr></label>
+        <input type="text" id="form-pretencao-salario-hora" class="form-control" ng-model="PretencaoSalarioHora" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label required">C# <abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelCsharp" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label required">Asp.Net MVC<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelAspNetMvc" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label required">AngularJs<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelAngularJs" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label required">Jquery<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelJquery" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label required">Bootstrap<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelBootstrap" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label required">WordPress<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelWordpress" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label required">Php<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelPhp" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label required">Android<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelAndroid" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label required">IOS<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NidelIos" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label class="control-label required">IONIC<abbr title="required">*</abbr></label>
+        <div class="container">
+            <div class="col-md-1">
+                <div class="panel">
+                    Nao conheco / I don't know
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="list-inline">
+                    <li ng-repeat="item in opcoes">
+                        <div class="col-md-1">
+                            <label class="control-label">{{item}}</label>
+                            <input type="radio" name="Csharp" ng-model="NivelIonic" ng-value="item" />
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1">
+                <div class="panel">
+                    Senior
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+        <label for="form-Portifolio" class="control-label">Portfolio: <abbr title="required">*</abbr></label>
+        <input type="text" id="form-Portifolio" class="form-control" ng-model="Portifolio" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="form-ConhecimentoLinguagens" class="control-label">(C#, Java, Angularjs, etc )In which programming languages you have knowledge? (Specify what has been studied in each) / Sobre quais linguagens de programação você tem conhecimento? (Especificar o que foi estudado em cada uma delas):</label>
+        <input type="text" id="form-ConhecimentoLinguagens" class="form-control" ng-model="ConhecimentoLinguagens" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="form-ExperienciaLinguagens" class="control-label">Which languages have you worked? (Specify what has worked with each of them) / Com quais linguagens você já trabalhou? (Especificar o que foi trabalhado com cada uma delas)</label>
+        <input type="text" id="form-ExperienciaLinguagens" class="form-control" ng-model="ExperienciaLinguagens" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="form-AreaInteresse" class="control-label">Have knowledge of any content management system for web?Tem conhecimentos em algum sistema de gerenciamento de conteúdo para web?</label>
+        <input type="text" id="form-ConhecimentoSGC" class="form-control" ng-model="ConhecimentoSGC" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-AreaInteresse" class="control-label">Have knowledge of any content management system for web?Tem conhecimentos em algum sistema de gerenciamento de conteúdo para web?</label>
+        <input type="text" id="form-AreaInteresse" class="form-control" ng-model="AreaInteresse" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-ConhecimentoEditorImagem" class="control-label">You have experience in any image editor? If so, what? / Tem experiência em algum editor de imagens? Caso sim, qual?</label>
+        <input type="text" id="form-ConhecimentoEditorImagem" class="form-control" ng-model="ConhecimentoEditorImagem" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-HorasDisponivel" class="control-label">You are attending or have attended a course? What? / Está cursando ou já cursou algum curso? Qual?</label>
+        <input type="text" id="form-CursoCursando" class="form-control" ng-model="CursoCursando" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-HorasDisponivel" class="control-label">How many hours have available a week? / Quantas horas tem disponível por semana? *</label>
+        <input type="text" id="form-HorasDisponivel" class="form-control" ng-model="HorasDisponivel" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="form-HorarioDisponivel" class="control-label">What time you have available and you want to work on projects Easy? / Qual o horário que tem disponível e que pretende trabalhar nos projetos da Easy? </label>
+        <input type="text" id="form-HorarioDisponivel" class="form-control" ng-model="HorarioDisponivel" />
+    </div>
+
+    <div class="form-group">
+        <label for="form-InformacaoBancaria" class="control-label">Bank Information / Paypal / Itau etc </label>
+        <input type="text" id="form-InformacaoBancaria" class="form-control" ng-model="InformacaoBancaria" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="form-ComentarioAdicional" class="control-label">Comments - additional information / Comentários - informações adicionais: </label>
+        <input type="text" id="form-ComentarioAdicional" class="form-control" ng-model="ComentarioAdicional" />
+    </div>
+
+    <div class="btn-group">
+        <button type="submit" class="btn btn-default" ng-click="salvar()">
+            Salvar
+        </button>
+        <button class="btn btn-default" ng-click="voltar()">
+            Voltar
+        </button>
+    </div>
+    <hr style="border: 0.5px dashed #ccc" />
+</form>

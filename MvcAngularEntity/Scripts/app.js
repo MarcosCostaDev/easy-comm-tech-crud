@@ -1,25 +1,23 @@
 ﻿var CandidadoApp = angular.module("CandidatoApp", ["ngRoute", "CandidatoControllers"]);
 
 
-
-
 CandidadoApp.config([
-    "$routeProvider", function ($routeProvider) {
+    "$routeProvider", function($routeProvider) {
 
 
         $routeProvider.when("/listar"
                 , {
-                    templateUrl: "Candidato/Listar.html"
+                    templateUrl: "App/Candidato/Listar.html"
                     , controller: "ListarController"
                 })
             .when("/Criar"
                 , {
-                    templateUrl: "Candidato/Editar.html"
+                    templateUrl: "App/Candidato/Editar.html"
                     , controller: "EditarController"
                 })
             .when("/Editar/:id"
                 , {
-                    templateUrl: "Candidato/Editar.html"
+                    templateUrl: "App/Candidato/Editar.html"
                     , controller: "EditarController"
                 })
             .otherwise(
@@ -28,6 +26,6 @@ CandidadoApp.config([
                 }
             );
 
-      
+
     }
 ]);

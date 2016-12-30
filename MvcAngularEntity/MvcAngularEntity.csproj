@@ -110,15 +110,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Candidato\Deletar.html" />
-    <Content Include="Candidato\Editar.html" />
-    <Content Include="Candidato\Listar.html" />
+    <Content Include="App\Candidato\Deletar.html" />
+    <Content Include="App\Candidato\Editar.html" />
+    <Content Include="App\Candidato\Listar.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="App\Partials\Modal.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
