@@ -1,0 +1,48 @@
+﻿<div>
+    <a href="#/Criar" class="btn">Novo Candidado</a>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Skype
+            </th>
+            <th>
+                Linkedin
+            </th>
+
+        </tr>
+        <tr ng-repeat="item in Candidatos">
+            <td>
+                <button class="btn btn-danger btn-sm" ng-click="DeletaProduto(item.Id)" data-toggle="tooltip" title="Clique para Deletar Produto">X</button>
+            </td>
+            <td>
+                {{item.Id}}
+            </td>
+            <td>
+                {{item.Nome}}
+            </td>
+            <td>
+                {{item.Email}}
+            </td>
+            <td>
+                {{item.Skype}}
+            </td>
+            <td>
+                {{item.Linkedin}}
+            </td>
+        </tr>
+    </table>
+</div>

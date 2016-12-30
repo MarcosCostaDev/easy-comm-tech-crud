@@ -1,17 +1,18 @@
-﻿
-@{
-    Layout = null;
-}
+﻿<!DOCTYPE html>
 
-<!DOCTYPE html>
-
-<html>
+<html ng-app="CandidatoApp">
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="@Url.Content("../../Content/bootstrap.min.css")"/>
+    <script src="@Url.Content("../../Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("../../Scripts/angular-route.min.js")"></script>
+    <script src="@Url.Content("../../Scripts/angular-route.min.js")"></script>
+    <script src="@Url.Content("../../Scripts/app.js")"></script>
+    <script src="@Url.Content("../../Scripts/controller.js")"></script>
     <title>Index</title>
 </head>
 <body>
-    <div> 
+    <div class="main container" ng-view> 
     </div>
 </body>
 </html>
