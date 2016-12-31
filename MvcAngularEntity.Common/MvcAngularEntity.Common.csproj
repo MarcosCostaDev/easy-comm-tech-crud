@@ -51,9 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscaVaga.cs">
+      <DependentUpon>Programadores.tt</DependentUpon>
+    </Compile>
     <Compile Include="Candidato.cs">
       <DependentUpon>Programadores.tt</DependentUpon>
     </Compile>
+    <Compile Include="CandidatoBuscaVaga.cs">
+      <DependentUpon>Programadores.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Candidato.cs" />
     <Compile Include="Programadores.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

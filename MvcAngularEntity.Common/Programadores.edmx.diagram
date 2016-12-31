@@ -4,8 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="593d09ec6d5e4f8498d3a74aaa70b617" Name="Diagram1" ZoomLevel="75">
-        <EntityTypeShape EntityType="EasyProgramadoresModel.Candidato" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="593d09ec6d5e4f8498d3a74aaa70b617" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="EasyProgramadoresModel.BuscaVaga" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="EasyProgramadoresModel.Candidato" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="EasyProgramadoresModel.CandidatoBuscaVaga" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="EasyProgramadoresModel.CandidatoBuscaVaga_BuscaVaga" />
+        <AssociationConnector Association="EasyProgramadoresModel.CandidatoBuscaVaga_Candidato" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,6 +14,12 @@ namespace MvcAngularEntity.Common
     
     public partial class Candidato
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Candidato()
+        {
+            this.CandidatoBuscaVagas = new HashSet<CandidatoBuscaVaga>();
+        }
+    
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Skype { get; set; }
@@ -43,5 +49,8 @@ namespace MvcAngularEntity.Common
         public Nullable<int> BuscaTipoVaga { get; set; }
         public string InformacaoBancaria { get; set; }
         public string ComentarioAdicional { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidatoBuscaVaga> CandidatoBuscaVagas { get; set; }
     }
 }

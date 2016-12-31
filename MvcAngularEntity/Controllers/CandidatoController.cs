@@ -14,7 +14,22 @@ namespace MvcAngularEntity.Controllers
         [ActionName("get"), HttpGet]
         public IEnumerable<Candidato> ListarCandidatos()
         {
-            return CandidatoBusiness.Listar();
+
+            try
+            {
+                var lista = CandidatoBusiness.Listar();
+
+                return lista;
+
+       
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+         
         }
 
         public Candidato Get(int Id)

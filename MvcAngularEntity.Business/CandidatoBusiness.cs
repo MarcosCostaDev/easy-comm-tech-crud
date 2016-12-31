@@ -11,19 +11,25 @@ namespace MvcAngularEntity.Business
 {
     public class CandidatoBusiness
     {
-        public static IList<Candidato> Listar()
+        public static IEnumerable<Candidato> Listar()
         {
+            IEnumerable<Candidato> lista;
             using (var contexto = new EasyProgramadoresEntities())
             {
                 try
                 {
-                    return contexto.Candidatoes.ToList();
+                    var query = contexto.Candidatoes.Include(x => x.CandidatoBuscaVagas.Select(p => p.BuscaVaga).Select(p => p.CandidatoBuscaVagas));
+
+                   
+                    lista = query.ToList();
+                    lista.ToList().ForEach( p => p.BuscaVagasList = new List<BuscaVaga>());
                 }
                 catch (Exception ex)
                 {
                     return null;
                 }
             }
+            return lista;
         }
 
         public static Candidato Obter(int Id)
@@ -32,7 +38,8 @@ namespace MvcAngularEntity.Business
             {
                 try
                 {
-                    return contexto.Candidatoes.Find(Id);
+                    return contexto.Candidatoes.Where(p => p.Id == Id).Include(x => x.CandidatoBuscaVagas.Select(p => p.BuscaVaga).Select(p => p.CandidatoBuscaVagas)).FirstOrDefault();
+
                 }
                 catch (Exception ex)
                 {
@@ -48,6 +55,19 @@ namespace MvcAngularEntity.Business
                 try
                 {
                     contexto.Candidatoes.Add(entity);
+
+
+                    foreach (var buscaVaga in entity.BuscaVagasList)
+                    {
+                        contexto.CandidatoBuscaVagas.Add(
+                       new CandidatoBuscaVaga()
+                       {
+                           CandidatoId = entity.Id,
+                           BuscaVagaId = buscaVaga.Id
+                       });
+                    }
+
+
                     contexto.SaveChanges();
 
                     return entity;
@@ -66,7 +86,25 @@ namespace MvcAngularEntity.Business
                 try
                 {
                     contexto.Entry(entity).State = EntityState.Modified;
+
+                    contexto.CandidatoBuscaVagas.RemoveRange(contexto.CandidatoBuscaVagas.Where(p => p.CandidatoId == entity.Id));
+
+                    foreach (var item in entity.BuscaVagasList)
+                    {
+                        contexto.CandidatoBuscaVagas.Add(new CandidatoBuscaVaga()
+                        {
+                            CandidatoId = entity.Id,
+                            BuscaVagaId = item.Id
+                        });
+                    }
+
                     contexto.SaveChanges();
+
+                    entity =
+                        contexto.Candidatoes.Where(p => p.Id == entity.Id)
+                            .Include(p => p.CandidatoBuscaVagas)
+                            .ToList()
+                            .FirstOrDefault();
                     return entity;
                 }
                 catch (Exception ex)

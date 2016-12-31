@@ -16,19 +16,19 @@ CandidatoControllers.controller("ListarController"
 
         $scope.Excluir = function (candidato) {
 
-               $http({
-                   method: 'DELETE'
-                 , url: '/api/Candidato/Delete?Id=' + candidato.Id
-               }).then(function (resultado) {
-                   $scope.Candidatos = resultado.data;
-               }, function (data) {
-                   $scope.Error = data.error;
-               });
+            $http({
+                method: 'DELETE'
+              , url: '/api/Candidato/Delete?Id=' + candidato.Id
+            }).then(function (resultado) {
+                $scope.Candidatos = resultado.data;
+            }, function (data) {
+                $scope.Error = data.error;
+            });
         }
 
         $scope.Editar = function (candidato) {
             $location.path("/Editar/" + candidato.Id);
-           
+
         }
 
 
@@ -38,9 +38,28 @@ CandidatoControllers.controller("EditarController"
     , ["$scope", "$filter", "$http", "$routeParams", "$location"
     , function ($scope, $filter, $http, $routeParams, $location) {
 
-            $scope.opcoes = [1, 2, 3, 4, 5];
+        $scope.opcoes = [1, 2, 3, 4, 5];
+
+        $http({
+            method: 'GET'
+                   , url: '/api/BuscaVagas'
+        }).then(function (resultado) {
+            $scope.BuscaVagasList = resultado.data;
+        }, function (data) {
+            $scope.Error = data.error;
+        });
+
 
         $scope.salvar = function () {
+            $scope.Candidato.BuscaVagasList = [];
+
+            angular.forEach($scope.BuscaVagasList
+                , function (item) {
+                    if (item.Checked) {
+                        $scope.Candidato.BuscaVagasList.push(item);
+                    }
+                   
+                });
 
             if ($scope.Candidato.Id) {
                 $http.put("/api/Candidato/", $scope.Candidato).success(function (data) {
@@ -58,7 +77,7 @@ CandidatoControllers.controller("EditarController"
             }
         }
 
-        $scope.voltar = function() {
+        $scope.voltar = function () {
             $location.path("/Listar");
         }
 

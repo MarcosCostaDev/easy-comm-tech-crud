@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EasyProgramadoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EasyProgramadoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuscaVaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Candidato">
           <Key>
             <PropertyRef Name="Id" />
@@ -39,14 +46,77 @@
           <Property Name="InformacaoBancaria" Type="varchar" MaxLength="100" />
           <Property Name="ComentarioAdicional" Type="text" />
         </EntityType>
+        <EntityType Name="CandidatoBuscaVaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuscaVagaId" Type="int" />
+          <Property Name="CandidatoId" Type="int" />
+          <Property Name="Selecionado" Type="bit" />
+        </EntityType>
+        <Association Name="CandidatoBuscaVaga_BuscaVaga">
+          <End Role="BuscaVaga" Type="Self.BuscaVaga" Multiplicity="0..1" />
+          <End Role="CandidatoBuscaVaga" Type="Self.CandidatoBuscaVaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuscaVaga">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoBuscaVaga">
+              <PropertyRef Name="BuscaVagaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CandidatoBuscaVaga_Candidato">
+          <End Role="Candidato" Type="Self.Candidato" Multiplicity="0..1" />
+          <End Role="CandidatoBuscaVaga" Type="Self.CandidatoBuscaVaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoBuscaVaga">
+              <PropertyRef Name="CandidatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EasyProgramadoresModelStoreContainer">
+          <EntitySet Name="BuscaVaga" EntityType="Self.BuscaVaga" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidatoBuscaVaga" EntityType="Self.CandidatoBuscaVaga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="CandidatoBuscaVaga_BuscaVaga" Association="Self.CandidatoBuscaVaga_BuscaVaga">
+            <End Role="BuscaVaga" EntitySet="BuscaVaga" />
+            <End Role="CandidatoBuscaVaga" EntitySet="CandidatoBuscaVaga" />
+          </AssociationSet>
+          <AssociationSet Name="CandidatoBuscaVaga_Candidato" Association="Self.CandidatoBuscaVaga_Candidato">
+            <End Role="Candidato" EntitySet="Candidato" />
+            <End Role="CandidatoBuscaVaga" EntitySet="CandidatoBuscaVaga" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EasyProgramadoresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EasyProgramadoresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuscaVagas" EntityType="EasyProgramadoresModel.BuscaVaga" />
+          <EntitySet Name="Candidatoes" EntityType="EasyProgramadoresModel.Candidato" />
+          <EntitySet Name="CandidatoBuscaVagas" EntityType="EasyProgramadoresModel.CandidatoBuscaVaga" />
+          <AssociationSet Name="CandidatoBuscaVaga_BuscaVaga" Association="EasyProgramadoresModel.CandidatoBuscaVaga_BuscaVaga">
+            <End Role="BuscaVaga" EntitySet="BuscaVagas" />
+            <End Role="CandidatoBuscaVaga" EntitySet="CandidatoBuscaVagas" />
+          </AssociationSet>
+          <AssociationSet Name="CandidatoBuscaVaga_Candidato" Association="EasyProgramadoresModel.CandidatoBuscaVaga_Candidato">
+            <End Role="Candidato" EntitySet="Candidatoes" />
+            <End Role="CandidatoBuscaVaga" EntitySet="CandidatoBuscaVagas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BuscaVaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CandidatoBuscaVagas" Relationship="EasyProgramadoresModel.CandidatoBuscaVaga_BuscaVaga" FromRole="BuscaVaga" ToRole="CandidatoBuscaVaga" />
+        </EntityType>
         <EntityType Name="Candidato">
           <Key>
             <PropertyRef Name="Id" />
@@ -80,48 +150,99 @@
           <Property Name="BuscaTipoVaga" Type="Int32" />
           <Property Name="InformacaoBancaria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ComentarioAdicional" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CandidatoBuscaVagas" Relationship="EasyProgramadoresModel.CandidatoBuscaVaga_Candidato" FromRole="Candidato" ToRole="CandidatoBuscaVaga" />
         </EntityType>
-        <EntityContainer Name="EasyProgramadoresEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Candidatoes" EntityType="Self.Candidato" />
-        </EntityContainer>
-      </Schema>
+        <EntityType Name="CandidatoBuscaVaga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuscaVagaId" Type="Int32" />
+          <Property Name="CandidatoId" Type="Int32" />
+          <Property Name="Selecionado" Type="Boolean" />
+          <NavigationProperty Name="BuscaVaga" Relationship="EasyProgramadoresModel.CandidatoBuscaVaga_BuscaVaga" FromRole="CandidatoBuscaVaga" ToRole="BuscaVaga" />
+          <NavigationProperty Name="Candidato" Relationship="EasyProgramadoresModel.CandidatoBuscaVaga_Candidato" FromRole="CandidatoBuscaVaga" ToRole="Candidato" />
+        </EntityType>
+        <Association Name="CandidatoBuscaVaga_BuscaVaga">
+          <End Type="EasyProgramadoresModel.BuscaVaga" Role="BuscaVaga" Multiplicity="0..1" />
+          <End Type="EasyProgramadoresModel.CandidatoBuscaVaga" Role="CandidatoBuscaVaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuscaVaga">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoBuscaVaga">
+              <PropertyRef Name="BuscaVagaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CandidatoBuscaVaga_Candidato">
+          <End Type="EasyProgramadoresModel.Candidato" Role="Candidato" Multiplicity="0..1" />
+          <End Type="EasyProgramadoresModel.CandidatoBuscaVaga" Role="CandidatoBuscaVaga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CandidatoBuscaVaga">
+              <PropertyRef Name="CandidatoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EasyProgramadoresModelStoreContainer" CdmEntityContainer="EasyProgramadoresEntities">
+          <EntitySetMapping Name="BuscaVagas">
+            <EntityTypeMapping TypeName="EasyProgramadoresModel.BuscaVaga">
+              <MappingFragment StoreEntitySet="BuscaVaga">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Candidatoes">
             <EntityTypeMapping TypeName="EasyProgramadoresModel.Candidato">
               <MappingFragment StoreEntitySet="Candidato">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Skype" ColumnName="Skype" />
-                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
-                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="PretencaoSalario" ColumnName="PretencaoSalario" />
-                <ScalarProperty Name="PretencaoSalarioHora" ColumnName="PretencaoSalarioHora" />
-                <ScalarProperty Name="NivelCSharp" ColumnName="NivelCSharp" />
-                <ScalarProperty Name="NivelAspNetMvc" ColumnName="NivelAspNetMvc" />
-                <ScalarProperty Name="NivelAngularJs" ColumnName="NivelAngularJs" />
-                <ScalarProperty Name="NivelJquery" ColumnName="NivelJquery" />
-                <ScalarProperty Name="NivelBootstrap" ColumnName="NivelBootstrap" />
-                <ScalarProperty Name="NivelWordpress" ColumnName="NivelWordpress" />
-                <ScalarProperty Name="NivelPhp" ColumnName="NivelPhp" />
-                <ScalarProperty Name="NivelAndroid" ColumnName="NivelAndroid" />
-                <ScalarProperty Name="NidelIos" ColumnName="NidelIos" />
-                <ScalarProperty Name="NivelIonic" ColumnName="NivelIonic" />
-                <ScalarProperty Name="Portifolio" ColumnName="Portifolio" />
-                <ScalarProperty Name="ConhecimentoLinguagens" ColumnName="ConhecimentoLinguagens" />
-                <ScalarProperty Name="ConhecimentoSGC" ColumnName="ConhecimentoSGC" />
-                <ScalarProperty Name="AreaInteresse" ColumnName="AreaInteresse" />
-                <ScalarProperty Name="HorasDisponivel" ColumnName="HorasDisponivel" />
-                <ScalarProperty Name="HorarioDisponivel" ColumnName="HorarioDisponivel" />
-                <ScalarProperty Name="BuscaTipoVaga" ColumnName="BuscaTipoVaga" />
-                <ScalarProperty Name="InformacaoBancaria" ColumnName="InformacaoBancaria" />
                 <ScalarProperty Name="ComentarioAdicional" ColumnName="ComentarioAdicional" />
+                <ScalarProperty Name="InformacaoBancaria" ColumnName="InformacaoBancaria" />
+                <ScalarProperty Name="BuscaTipoVaga" ColumnName="BuscaTipoVaga" />
+                <ScalarProperty Name="HorarioDisponivel" ColumnName="HorarioDisponivel" />
+                <ScalarProperty Name="HorasDisponivel" ColumnName="HorasDisponivel" />
+                <ScalarProperty Name="AreaInteresse" ColumnName="AreaInteresse" />
+                <ScalarProperty Name="ConhecimentoSGC" ColumnName="ConhecimentoSGC" />
+                <ScalarProperty Name="ConhecimentoLinguagens" ColumnName="ConhecimentoLinguagens" />
+                <ScalarProperty Name="Portifolio" ColumnName="Portifolio" />
+                <ScalarProperty Name="NivelIonic" ColumnName="NivelIonic" />
+                <ScalarProperty Name="NidelIos" ColumnName="NidelIos" />
+                <ScalarProperty Name="NivelAndroid" ColumnName="NivelAndroid" />
+                <ScalarProperty Name="NivelPhp" ColumnName="NivelPhp" />
+                <ScalarProperty Name="NivelWordpress" ColumnName="NivelWordpress" />
+                <ScalarProperty Name="NivelBootstrap" ColumnName="NivelBootstrap" />
+                <ScalarProperty Name="NivelJquery" ColumnName="NivelJquery" />
+                <ScalarProperty Name="NivelAngularJs" ColumnName="NivelAngularJs" />
+                <ScalarProperty Name="NivelAspNetMvc" ColumnName="NivelAspNetMvc" />
+                <ScalarProperty Name="NivelCSharp" ColumnName="NivelCSharp" />
+                <ScalarProperty Name="PretencaoSalarioHora" ColumnName="PretencaoSalarioHora" />
+                <ScalarProperty Name="PretencaoSalario" ColumnName="PretencaoSalario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidatoBuscaVagas">
+            <EntityTypeMapping TypeName="EasyProgramadoresModel.CandidatoBuscaVaga">
+              <MappingFragment StoreEntitySet="CandidatoBuscaVaga">
+                <ScalarProperty Name="Selecionado" ColumnName="Selecionado" />
+                <ScalarProperty Name="CandidatoId" ColumnName="CandidatoId" />
+                <ScalarProperty Name="BuscaVagaId" ColumnName="BuscaVagaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

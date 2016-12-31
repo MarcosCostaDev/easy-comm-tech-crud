@@ -25,6 +25,8 @@ namespace MvcAngularEntity.Common
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BuscaVaga> BuscaVagas { get; set; }
         public virtual DbSet<Candidato> Candidatoes { get; set; }
+        public virtual DbSet<CandidatoBuscaVaga> CandidatoBuscaVagas { get; set; }
     }
 }

@@ -145,6 +145,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BuscaVagasController.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\FormularioController.cs" />
     <Compile Include="Global.asax.cs">

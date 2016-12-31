@@ -1,7 +1,7 @@
 ﻿<h3>{{Titulo}}</h3>
 <hr />
 <form role="form" name="form" style="max-width: 500px">
-<strong class="error"></strong>
+    <strong class="error"></strong>
 
     <div class="alert alert-danger" ng-show="error" role="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -9,25 +9,25 @@
         {{error}}
     </div>
 
-<div class="form-group">
+    <div class="form-group">
         <label for="form-nome" class="control-label required">Nome/Name: <abbr title="required">*</abbr></label>
-        <input type="text" id="form-nome" class="form-control" ng-model="Candidato.Nome" required/>
+        <input type="text" id="form-nome" class="form-control" ng-model="Candidato.Nome" required />
 
-      
+
     </div>
 
     <div class="form-group">
         <label for="form-skype" class="control-label required">Skype: ( please create an account if you don't have yet / bom criar caso não tenha): <abbr title="required">*</abbr></label>
-        <input type="text" id="form-skype" class="form-control" ng-model="Candidato.Skype" required/>
+        <input type="text" id="form-skype" class="form-control" ng-model="Candidato.Skype" required />
 
-     
+
     </div>
 
     <div class="form-group">
         <label for="form-telefone" class="control-label required">Telefone/Phone (Whatsapp): <abbr title="required">*</abbr></label>
         <input type="text" id="form-telefone" class="form-control" ng-model="Candidato.Telefone" required />
 
-      
+
     </div>
 
     <div class="form-group">
@@ -47,7 +47,7 @@
 
     <div class="form-group">
         <label for="form-pretencao-salario" class="control-label required">What is your hourly salary requirements? / Qual sua pretensão salarial por hora? <abbr title="required">*</abbr></label>
-        <input type="number" id="form-pretencao-salario"  class="form-control" ng-model="Candidato.PretencaoSalario" required />
+        <input type="number" id="form-pretencao-salario" class="form-control" ng-model="Candidato.PretencaoSalario" required />
     </div>
 
     <div class="form-group">
@@ -405,6 +405,25 @@
         <input type="text" id="form-HorarioDisponivel" class="form-control" ng-model="Candidato.HorarioDisponivel" />
     </div>
 
+
+
+
+    <div class="form-group">
+        <label class="control-label">You search a job: / Você busca uma vaga: * </label>
+        <div class="container">
+
+            <div class="col-md-4">
+                <ul class="list-unstyled" >
+                    <li ng-repeat="item in BuscaVagasList">
+
+                        <input type="checkbox"  name="BuscaVagasList" ng-model="item.Checked">  <label class="control-label">{{item.Nome}}</label></input>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group">
         <label for="form-InformacaoBancaria" class="control-label">Bank Information / Paypal / Itau etc </label>
         <input type="text" id="form-InformacaoBancaria" class="form-control" ng-model="Candidato.InformacaoBancaria" />
@@ -417,7 +436,7 @@
     </div>
 
     <div class="btn-group">
-        <button type="submit" ng-disabled="!form.$valid" class="btn btn-default" ng-click="salvar()">
+        <button type="submit" class="btn btn-default" ng-click="salvar()">
             Salvar
         </button>
         <button class="btn btn-default" ng-click="voltar()">
