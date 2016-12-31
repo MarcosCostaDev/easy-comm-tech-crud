@@ -79,7 +79,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <EntityDeploy Include="Programadores.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Programadores.Designer.cs</LastGenOutput>
