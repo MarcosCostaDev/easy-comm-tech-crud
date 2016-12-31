@@ -18,11 +18,40 @@ namespace MvcAngularEntity.Business
             {
                 try
                 {
-                    var query = contexto.Candidatoes.Include(x => x.CandidatoBuscaVagas.Select(p => p.BuscaVaga).Select(p => p.CandidatoBuscaVagas));
+                    var query = contexto.Candidatoes.ToList().Select(p => new Candidato()
+                    {
+                        Id = p.Id,
+                        Nome = p.Nome,
+                        AreaInteresse = p.AreaInteresse,
+                        Cidade = p.Cidade,
+                        ComentarioAdicional = p.ComentarioAdicional,
+                        ConhecimentoLinguagens = p.ConhecimentoLinguagens,
+                        ConhecimentoSGC = p.ConhecimentoSGC,
+                        Email = p.Email,
+                        Estado = p.Estado,
+                        HorarioDisponivel = p.HorarioDisponivel,
+                        HorasDisponivel = p.HorasDisponivel,
+                        InformacaoBancaria = p.InformacaoBancaria,
+                        Linkedin = p.Linkedin,
+                        NidelIos = p.NidelIos,
+                        NivelAndroid = p.NivelAndroid,
+                        NivelAngularJs = p.NivelAngularJs,
+                        NivelAspNetMvc = p.NivelAspNetMvc,
+                        NivelBootstrap = p.NivelBootstrap,
+                        NivelCSharp = p.NivelCSharp,
+                        NivelIonic = p.NivelIonic,
+                        NivelJquery = p.NivelJquery,
+                        NivelPhp = p.NivelPhp,
+                        NivelWordpress = p.NivelWordpress,
+                        Portifolio = p.Portifolio,
+                        PretencaoSalario = p.PretencaoSalario,
+                        PretencaoSalarioHora = p.PretencaoSalarioHora,
+                        Skype = p.Skype,
+                        Telefone = p.Telefone
+                    });
 
                    
                     lista = query.ToList();
-                    lista.ToList().ForEach( p => p.BuscaVagasList = new List<BuscaVaga>());
                 }
                 catch (Exception ex)
                 {
@@ -94,7 +123,8 @@ namespace MvcAngularEntity.Business
                         contexto.CandidatoBuscaVagas.Add(new CandidatoBuscaVaga()
                         {
                             CandidatoId = entity.Id,
-                            BuscaVagaId = item.Id
+                            BuscaVagaId = item.Id,
+                            Selecionado = true
                         });
                     }
 

@@ -16,7 +16,12 @@ namespace MvcAngularEntity.Business
             {
                 try
                 {
-                    var lista = contexto.BuscaVagas.Include(p => p.CandidatoBuscaVagas).ToList();
+                    var lista = contexto.BuscaVagas.ToList().Select(p => new BuscaVaga()
+                    {
+                        Id = p.Id,
+                        Nome = p.Nome
+                        
+                    }).ToList();
 
                     return lista;
                 }
