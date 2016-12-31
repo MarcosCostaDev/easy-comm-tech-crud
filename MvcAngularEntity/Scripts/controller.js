@@ -51,14 +51,29 @@ CandidatoControllers.controller("EditarController"
 
 
         $scope.salvar = function () {
-            $scope.Candidato.BuscaVagasList = [];
 
+            $scope.Candidato.CandidatoBuscaVagas = $scope.Candidato.CandidatoBuscaVagas || [];
+            var temTipoVaga =  $scope.Candidato.CandidatoBuscaVagas.length > 0;
             angular.forEach($scope.BuscaVagasList
                 , function (item) {
-                    if (item.Checked) {
-                        $scope.Candidato.BuscaVagasList.push(item);
+                    if (temTipoVaga) {
+                        angular.forEach($scope.Candidato.CandidatoBuscaVagas
+                      , function (item2) {
+                          if (item.Id == item2.BuscaVagaId) {
+                              item2.Selecionado = item.Selecionado;
+                          }
+                      });
                     }
-                   
+                    else {
+                      
+                        $scope.Candidato.CandidatoBuscaVagas.push({
+                            BuscaVagaId: item.Id
+                                , CandidatoId: $scope.Candidato.Id || null
+                                , Selecionado: item.Selecionado || false
+                        });
+                    }
+
+
                 });
 
             if ($scope.Candidato.Id) {
@@ -81,6 +96,7 @@ CandidatoControllers.controller("EditarController"
             $location.path("/Listar");
         }
 
+
         if ($routeParams.Id) {
             $scope.Id = $routeParams.Id;
             $scope.Titulo = "Editar Candidato";
@@ -88,6 +104,17 @@ CandidatoControllers.controller("EditarController"
             $http.get("/api/Candidato?id=" + $scope.Id)
             .success(function (data) {
                 $scope.Candidato = data;
+
+                angular.forEach($scope.Candidato.CandidatoBuscaVagas
+                    , function (value, key) {
+
+                        angular.forEach($scope.BuscaVagasList
+                            , function (value2, key2) {
+                                if (value.BuscaVagaId == value2.Id) {
+                                    value2.Selecionado = value.Selecionado;
+                                }
+                            });
+                    });
             });
         }
         else {

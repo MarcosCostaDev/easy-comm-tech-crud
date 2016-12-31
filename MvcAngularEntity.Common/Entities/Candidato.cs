@@ -10,7 +10,5 @@ namespace MvcAngularEntity.Common
     public partial class Candidato
     { 
     
-        [NotMapped]
-        public IList<BuscaVaga> BuscaVagasList { get; set; }
-    }
+      }
 }

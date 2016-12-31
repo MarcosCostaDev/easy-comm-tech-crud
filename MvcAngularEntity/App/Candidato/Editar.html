@@ -69,7 +69,7 @@
                     <li ng-repeat="item in opcoes">
                         <div class="col-md-1">
                             <label class="control-label">{{item}}</label>
-                            <input type="radio" name="Csharp" ng-model="Candidato.NivelCsharp" ng-value="item" required />
+                            <input type="radio" name="Csharp" ng-model="Candidato.NivelCSharp" ng-value="item" required />
                         </div>
 
                     </li>
@@ -416,7 +416,7 @@
                 <ul class="list-unstyled" >
                     <li ng-repeat="item in BuscaVagasList">
 
-                        <input type="checkbox"  name="BuscaVagasList" ng-model="item.Checked">  <label class="control-label">{{item.Nome}}</label></input>
+                        <input type="checkbox"  name="BuscaVagasList" ng-model="item.Selecionado">  <label class="control-label">{{item.Nome}}</label></input>
 
                     </li>
                 </ul>

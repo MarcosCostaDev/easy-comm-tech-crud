@@ -50,7 +50,7 @@ namespace MvcAngularEntity.Business
                         Telefone = p.Telefone
                     });
 
-                   
+
                     lista = query.ToList();
                 }
                 catch (Exception ex)
@@ -67,7 +67,17 @@ namespace MvcAngularEntity.Business
             {
                 try
                 {
-                    return contexto.Candidatoes.Where(p => p.Id == Id).Include(x => x.CandidatoBuscaVagas.Select(p => p.BuscaVaga).Select(p => p.CandidatoBuscaVagas)).FirstOrDefault();
+
+                    contexto.Configuration.ProxyCreationEnabled = false;
+                    contexto.Configuration.LazyLoadingEnabled = false;
+
+                    return contexto.Candidatoes
+                        .Include(x => x.CandidatoBuscaVagas
+                                        .Select(p => p.BuscaVaga)
+                                        .Select(p => p.CandidatoBuscaVagas)
+                                )
+                                 .Where(p => p.Id == Id)
+                        .FirstOrDefault();
 
                 }
                 catch (Exception ex)
@@ -84,18 +94,20 @@ namespace MvcAngularEntity.Business
                 try
                 {
                     contexto.Candidatoes.Add(entity);
+                    
+
+                    contexto.SaveChanges();
 
 
-                    foreach (var buscaVaga in entity.BuscaVagasList)
+                    foreach (var buscaVaga in entity.CandidatoBuscaVagas)
                     {
                         contexto.CandidatoBuscaVagas.Add(
                        new CandidatoBuscaVaga()
                        {
                            CandidatoId = entity.Id,
-                           BuscaVagaId = buscaVaga.Id
+                           BuscaVagaId = buscaVaga.BuscaVagaId
                        });
                     }
-
 
                     contexto.SaveChanges();
 
@@ -114,20 +126,24 @@ namespace MvcAngularEntity.Business
             {
                 try
                 {
-                    contexto.Entry(entity).State = EntityState.Modified;
+                    entity.CandidatoBuscaVagas.ToList().ForEach(p => p.CandidatoId = entity.Id);
 
-                    contexto.CandidatoBuscaVagas.RemoveRange(contexto.CandidatoBuscaVagas.Where(p => p.CandidatoId == entity.Id));
 
-                    foreach (var item in entity.BuscaVagasList)
+                    foreach (var item in entity.CandidatoBuscaVagas)
                     {
-                        contexto.CandidatoBuscaVagas.Add(new CandidatoBuscaVaga()
+                        if(item.Id == 0)
                         {
-                            CandidatoId = entity.Id,
-                            BuscaVagaId = item.Id,
-                            Selecionado = true
-                        });
+                            contexto.CandidatoBuscaVagas.Add(item);
+                        }
+                        else
+                        {
+                            contexto.Entry(item).State = EntityState.Modified;
+                        }
+                       
                     }
 
+                    contexto.Entry(entity).State = EntityState.Modified;
+                    
                     contexto.SaveChanges();
 
                     entity =
@@ -154,6 +170,7 @@ namespace MvcAngularEntity.Business
 
                     if (entity == null) throw new Exception("Candidato não encontrado!");
 
+                    contexto.CandidatoBuscaVagas.RemoveRange(contexto.CandidatoBuscaVagas.Where(p => p.CandidatoId == entity.Id));
                     contexto.Candidatoes.Remove(entity);
                     contexto.SaveChanges();
 

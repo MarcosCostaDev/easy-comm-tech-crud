@@ -89,8 +89,10 @@ namespace MvcAngularEntity.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var candidato = CandidatoBusiness.Delete(Id);
-                    var response = Request.CreateResponse(HttpStatusCode.OK, candidato);
+
+                    CandidatoBusiness.Delete(Id);
+                    var candidatos = CandidatoBusiness.Listar();
+                    var response = Request.CreateResponse(HttpStatusCode.OK, candidatos);
                     return response;
 
                 }
