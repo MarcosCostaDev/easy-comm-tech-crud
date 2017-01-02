@@ -20,7 +20,7 @@ Editando registro cadastrado
 ![Alt text](/Prints/6.PNG "Editando registro cadastrado")
 
 Editando opções de especialidades
-![Alt text](/Prints/9.PNG "Editando opções de especialidades")
+![Alt text](/Prints/10.PNG "Editando opções de especialidades")
 
 Listagem do registro cadastrado
 ![Alt text](/Prints/7.PNG "Listagem do registro após a edição")
