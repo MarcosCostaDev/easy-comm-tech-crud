@@ -15,7 +15,7 @@
 ####FRONT-END
 **HTML**
 
-**CSS **
+**CSS**
 
 **JAVASCRIPT**
 
