@@ -1,5 +1,12 @@
-# easy-commu-
-projeto de avaliação da easy
+# Projeto para Easy Communication and Technology
+
+projeto de avaliação para Easy Communication and Technology
+
+Tecnologias usadas: 
+ASP.NET MVC
+ASP.NET WEB API
+ANGULAR JS 1
+BOOSTRAP
 
 Imagens do projeto
 
