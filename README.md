@@ -1,16 +1,30 @@
 # Projeto para Easy Communication and Technology
 
-projeto de avaliação para Easy Communication and Technology
+##projeto de avaliação para Easy Communication and Technology
 
-Tecnologias usadas: 
+###Tecnologias usadas: 
 
-ASP.NET MVC
+####BACK END 
 
-ASP.NET WEB API
+**ASP.NET MVC
 
-ANGULAR JS 1
+**ASP.NET WEB API
 
-BOOSTRAP
+**ENTITY FRAMEWORK
+
+####FRONT-END
+**HTML
+
+**CSS 
+
+**JAVASCRIPT
+
+**ANGULAR JS 1
+
+**BOOSTRAP
+
+
+
 
 Imagens do projeto
 
