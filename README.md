@@ -1,6 +1,6 @@
 # Projeto para Easy Communication and Technology
 
-##projeto de avaliação para Easy Communication and Technology
+##Projeto de avaliação para Easy Communication and Technology
 
 ###Tecnologias usadas: 
 
