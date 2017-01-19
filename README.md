@@ -6,27 +6,27 @@
 
 ####BACK END 
 
-**ASP.NET MVC**
+*ASP.NET MVC*
 
-**ASP.NET WEB API**
+*ASP.NET WEB API*
 
-**ENTITY FRAMEWORK**
+*ENTITY FRAMEWORK*
 
 ####FRONT-END
-**HTML**
+*HTML*
 
-**CSS**
+*CSS*
 
-**JAVASCRIPT**
+*JAVASCRIPT*
 
-**ANGULAR JS 1**
+*ANGULAR JS 1*
 
-**BOOSTRAP**
-
-
+*BOOSTRAP*
 
 
-Imagens do projeto
+
+
+####Imagens do projeto
 
 Listagem sem registro:
 ![Alt text](/Prints/1.PNG "Listagem sem registro")
