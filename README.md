@@ -1,10 +1,13 @@
 # Projeto para Easy Communication and Technology
 
 ##Projeto de avaliação para Easy Communication and Technology
+**Criar formulário de cadastro de desenvolvedores usando as tecnologias C#, ASP.NET, Entity Framework e AngularJS**
 
 ###Tecnologias usadas: 
 
 ####BACK END 
+
+*C#*
 
 *ASP.NET MVC*
 
